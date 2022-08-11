@@ -6,23 +6,15 @@ public:
   string xor_operation(string s1, string s2) {
     ll len = s1.size();
     string ans = "";
-    for (ll i = 1; i < len; ++i) {
-      if (s1[i] == s2[i]) ans += '0';
-      else ans += '1';
-    }
+    for (ll i = 1; i < len; ++i)  ans += (s1[i] == s2[i] ? '0' : '1');
     return ans;
   }
   string Division_of_Binary_no(string divident, string divisor) {
-    ll len1 = divident.size();
-    ll len2 = divisor.size();
+    ll len1 = divident.size(), len2 = divisor.size();
     string str = divident.substr(0, len2 - 1);
     for (ll i = len2 - 1; i < len1; ++i) {
       str += divident[i];
-      if (str[0] == '0') {
-        str = str.substr(1, str.size());
-      } else {
-        str = xor_operation(str, divisor);
-      }
+      str = (str[0] == '0' ? str.substr(1, str.size()) : xor_operation(str, divisor));
     }
     return str;
   }
